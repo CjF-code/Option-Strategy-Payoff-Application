@@ -48,8 +48,9 @@ with st.sidebar:
         min_value=0.01,
         max_value=spot_price * 10,
         step=5.0,
-        value=np.floor(0.5 * spot_price),
+        value=st.session_state.prev_K,
     )
+    st.session_state.prev_K = K
 
     # Calculate option prices
     call_option_price = bs.blackScholes(
